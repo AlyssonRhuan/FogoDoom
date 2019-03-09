@@ -8,7 +8,7 @@ function start(){
     createFireSource()
     renderFire()
 
-    setInterval(calculateFirePropagation, 50)
+    setInterval(calculateFirePropagation, 1)
 }
 
 function createFireDataStructure(){
@@ -25,8 +25,7 @@ function calculateFirePropagation(){
             const pixelIndex = column + ( fireWidth * row ) 
             updateFireIntensityPerPixel(pixelIndex)
         }    
-    }
-    
+    }    
     renderFire()
 }
 
