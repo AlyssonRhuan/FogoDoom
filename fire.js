@@ -22,8 +22,25 @@ function calculateFirePropagation(){
     for(let column = 0; column < fireWidth; column++){
         for(let row = 0; row < fireHeight; row++){
             const pixelIndex = column + ( fireWidth * row ) 
+            updateFireIntensityPerPixel(pixelIndex)
         }    
     }
+    
+    renderFire()
+}
+
+function updateFireIntensityPerPixel(currentPixelIndex){
+    const belowPixelIndex = currentPixelIndex + fireWidth
+
+    if(belowPixelIndex >= fireWidth * fireHeight){
+        return
+    }
+
+    const decay = 1
+    const belowPixelFireIntensity = firePixelArray[belowPixelIndex]
+    const newFireIntensity = belowPixelFireIntensity - decay
+
+    firePixelArray[currentPixelIndex] = newFireIntensity < 0 ? 0 : newFireIntensity
 }
 
 function renderFire(){
